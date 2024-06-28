@@ -60,6 +60,13 @@ public class BaseClass {
 		return response;
 	}
 
+	public static Response PUT(String endPoint, HashMap<String, String> pathParams, HashMap<String, String> queryParams,
+			String requestBody, String contentType) {
+		Response response = RestAssured.given().pathParams(pathParams).queryParams(queryParams).baseUri(baseURI)
+				.body(requestBody).contentType(contentType).post(endPoint);
+		return response;
+	}
+
 	public static Response DELETE(String endPoint, HashMap<String, String> pathParams) {
 		Response response = RestAssured.given().pathParams(pathParams).baseUri(baseURI).delete(endPoint);
 		return response;
